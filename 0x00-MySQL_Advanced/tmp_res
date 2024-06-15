@@ -1,115 +1,115 @@
-origin	nb_fans	ranking
-USA	99349	3
-Sweden	47169	2
-Finland	32878	4
-United Kingdom	32518	1
-Germany	29486	5
-Norway	22405	7
-Canada	8874	18
-The Netherlands	8819	8
-Italy	7178	15
-France	7127	10
-Australia	5825	13
-Poland	5805	6
-Switzerland	3875	9
-Greece	3518	14
-Denmark	3084	23
-Brazil	3070	11
-Austria	2507	17
-Portugal	1873	12
-Russia	1836	24
-Spain	1832	26
-United Kingdom, USA	1684	16
-Japan	1494	34
-Ireland	1381	21
-Denmark, USA	1166	20
-Belgium	1041	31
-Israel	1040	19
-Ukraine	739	25
-Romania	722	32
-Faroe Islands	618	22
-Iceland	609	28
-Chile	544	33
-Hungary	538	39
-Czech Republic	414	54
-Iran	372	48
-Argentina	331	50
-Israel, The Netherlands	307	27
-	299	38
-Andorra	279	29
-Tunisia, France	275	30
-New Zealand	269	40
-Estonia	235	44
-Turkey	217	51
-Taiwan	216	36
-Latvia	215	46
-Slovenia	215	47
-Colombia, USA	184	35
-Serbia	182	56
-Hungary, United Kingdom	177	37
-Mexico	173	49
-Jordan	150	45
-India	145	64
-Greece, Sweden	141	41
-Syria	138	72
-Sweden, Finland	134	42
-Slovak Republic	130	65
-Lithuania	129	62
-Australia, United Kingdom	124	43
-Indonesia	103	60
-Singapore	100	67
-Malta	96	70
-Egypt	86	58
-Croatia	83	69
-UAE	82	52
-Liechtenstein	74	53
-China	66	63
-Bulgaria	65	81
-Norway, Finland	64	55
-Belgium, United Kingdom	58	57
-Russia, Canada	58	59
-Lebanon	57	68
-Iraq, USA	51	61
-Kyrgyzstan, Germany	41	66
-South Africa	38	80
-Luxembourg	33	71
-Belarus	32	88
-Bosnia and Herzegovina	31	87
-Costa Rica	26	91
-Saudi Arabia	26	73
-Peru	20	84
-Georgia	20	74
-USA, Cyprus	20	75
-Iraq	19	77
-Bahrain	19	76
-Moldova	18	90
-Korea, South	17	78
-Malaysia	16	79
-Cyprus	16	94
-Greece, USA	13	82
-Monaco	12	89
-Israel, Germany	12	83
-Macedonia	11	85
-Colombia	11	93
-Portugal, United Kingdom	10	86
-Bosnia and Herzegovina, Croatia	9	92
-Finland, Sweden	6	96
-Sri Lanka	6	99
-Iran, Norway	6	95
-Ukraine, Canada	5	97
-Bolivia	5	98
-Armenia	4	100
-Azerbaijan	4	101
-Lithuania, United Kingdom	3	102
-Ecuador	3	103
-Mexico, USA	3	104
-United Kingdom, Greece	2	109
-Swaziland	2	110
-Canada, France	2	105
-Albania	2	106
-Jersey	2	107
-Lithuania, Germany	2	108
-Italy, Spain	1	111
-Venezuela	1	112
-Poland, Sweden	1	113
-Greenland	0	114
+origin	nb_fans
+USA	99349
+Sweden	47169
+Finland	32878
+United Kingdom	32518
+Germany	29486
+Norway	22405
+Canada	8874
+The Netherlands	8819
+Italy	7178
+France	7127
+Australia	5825
+Poland	5805
+Switzerland	3875
+Greece	3518
+Denmark	3084
+Brazil	3070
+Austria	2507
+Portugal	1873
+Russia	1836
+Spain	1832
+United Kingdom, USA	1684
+Japan	1494
+Ireland	1381
+Denmark, USA	1166
+Belgium	1041
+Israel	1040
+Ukraine	739
+Romania	722
+Faroe Islands	618
+Iceland	609
+Chile	544
+Hungary	538
+Czech Republic	414
+Iran	372
+Argentina	331
+Israel, The Netherlands	307
+	299
+Andorra	279
+Tunisia, France	275
+New Zealand	269
+Estonia	235
+Turkey	217
+Taiwan	216
+Latvia	215
+Slovenia	215
+Colombia, USA	184
+Serbia	182
+Hungary, United Kingdom	177
+Mexico	173
+Jordan	150
+India	145
+Greece, Sweden	141
+Syria	138
+Sweden, Finland	134
+Slovak Republic	130
+Lithuania	129
+Australia, United Kingdom	124
+Indonesia	103
+Singapore	100
+Malta	96
+Egypt	86
+Croatia	83
+UAE	82
+Liechtenstein	74
+China	66
+Bulgaria	65
+Norway, Finland	64
+Belgium, United Kingdom	58
+Russia, Canada	58
+Lebanon	57
+Iraq, USA	51
+Kyrgyzstan, Germany	41
+South Africa	38
+Luxembourg	33
+Belarus	32
+Bosnia and Herzegovina	31
+Saudi Arabia	26
+Costa Rica	26
+Georgia	20
+USA, Cyprus	20
+Peru	20
+Bahrain	19
+Iraq	19
+Moldova	18
+Korea, South	17
+Cyprus	16
+Malaysia	16
+Greece, USA	13
+Monaco	12
+Israel, Germany	12
+Macedonia	11
+Colombia	11
+Portugal, United Kingdom	10
+Bosnia and Herzegovina, Croatia	9
+Finland, Sweden	6
+Sri Lanka	6
+Iran, Norway	6
+Ukraine, Canada	5
+Bolivia	5
+Armenia	4
+Azerbaijan	4
+Mexico, USA	3
+Lithuania, United Kingdom	3
+Ecuador	3
+Canada, France	2
+Albania	2
+Jersey	2
+Lithuania, Germany	2
+United Kingdom, Greece	2
+Swaziland	2
+Venezuela	1
+Poland, Sweden	1
+Italy, Spain	1
+Greenland	0
