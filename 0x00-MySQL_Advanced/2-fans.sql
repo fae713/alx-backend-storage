@@ -3,10 +3,10 @@
 -- This script works with metal_bands.sql by creating a column names: origin and nb_fans
 
 SET @row_number = 0;
-SET @total_fans = 0;
+SET @nb_fans = 0;
 
-SELECT origin, (@total_fans := @total_fans + SUM(fans)) AS total_fans, 
+SELECT origin, (@nb_fans := @nb_fans + SUM(fans)) AS nb_fans, 
        (@row_number := @row_number + 1) AS ranking
 FROM metal_bands
 GROUP BY origin
-ORDER BY total_fans DESC;
+ORDER BY nb_fans DESC;

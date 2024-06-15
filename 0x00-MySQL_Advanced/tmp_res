@@ -1,4 +1,4 @@
-origin	total_fans	ranking
+origin	nb_fans	ranking
 USA	99349	3
 Sweden	47169	2
 Finland	32878	4
@@ -66,8 +66,8 @@ Liechtenstein	74	53
 China	66	63
 Bulgaria	65	81
 Norway, Finland	64	55
-Russia, Canada	58	59
 Belgium, United Kingdom	58	57
+Russia, Canada	58	59
 Lebanon	57	68
 Iraq, USA	51	61
 Kyrgyzstan, Germany	41	66
@@ -87,8 +87,8 @@ Korea, South	17	78
 Malaysia	16	79
 Cyprus	16	94
 Greece, USA	13	82
-Israel, Germany	12	83
 Monaco	12	89
+Israel, Germany	12	83
 Macedonia	11	85
 Colombia	11	93
 Portugal, United Kingdom	10	86
@@ -100,9 +100,9 @@ Ukraine, Canada	5	97
 Bolivia	5	98
 Armenia	4	100
 Azerbaijan	4	101
+Lithuania, United Kingdom	3	102
 Ecuador	3	103
 Mexico, USA	3	104
-Lithuania, United Kingdom	3	102
 United Kingdom, Greece	2	109
 Swaziland	2	110
 Canada, France	2	105
