@@ -4,7 +4,7 @@
 -- use attributes formed and split for computing the lifespan.
 
 SELECT band_name, 
-       IFNULL(split, 2022) - IFNULL(formed, 0) AS lifespan
+       2022 - CAST(formed AS UNSIGNED) AS lifespan
 FROM metal_bands
-WHERE style = 'Glam Rock'
+WHERE style = 'Glam rock'
 ORDER BY lifespan DESC;
