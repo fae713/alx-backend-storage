@@ -1,13 +1,13 @@
 -- A SQL script that creates a stored procedure ComputeAverageScoreForUser that computes and store the average score for a student. Note: An average score can be a decimal
 
+DROP PROCEDURE IF EXISTS ComputeAverageScoreForUser;
 DELIMITER $$
-
-CREATE PROCEDURE ComputeAverageScoreForUser(IN user_id INT)
+CREATE PROCEDURE ComputeAverageScoreForUser(
+    IN user_id INT)
 BEGIN
-    -- Directly calculate the average score and update the user's record
-    UPDATE users
-    SET average_score = COALESCE(AVG(corrections.score), 0)
-    WHERE id = user_id AND EXISTS(SELECT 1 FROM corrections WHERE user_id = user_id);
-END$$
-
+    DECLARE avg_score FLOAT;
+    SET avg_score = (SELECT AVG(score) FROM corrections AS C WHERE C.user_id=user_id);
+    UPDATE users SET average_score = avg_score WHERE id=user_id;
+END
+$$
 DELIMITER ;
