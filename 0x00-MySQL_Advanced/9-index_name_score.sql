@@ -3,7 +3,4 @@
 -- Only the first letter of name AND score must be indexed
 
 
-ALTER TABLE names
-ADD COLUMN score_value DOUBLE GENERATED ALWAYS AS (score) STORED;
-
-CREATE INDEX idx_name_first_score ON names (name, score);
+CREATE INDEX idx_name_first_score ON names(name(1), score);
