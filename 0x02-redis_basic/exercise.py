@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-- Create a Cache class. In the __init__.
+- Create a Cache class.
 - Create a store method that takes a data argument and returns a string.
 """
 
