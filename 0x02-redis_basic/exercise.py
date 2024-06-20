@@ -33,32 +33,6 @@ class Cache:
         key = str(uuid.uuid4())
         self._redis.set(key, data)
         return key
-    
-    def get(self, key: str,
-            fn: Optional[Callable[[bytes], Union[str, bytes, int, float]]] = 
-            None) -> Union[str, bytes, int, float]:
-        """
-        - method that take a key str and an optional Callable(fn).
-
-        - params:
-          key -> The key of the data to retrieve.
-          fn: -> An optional callable to convert the retrieved data.
-          return -> The retrieved data.
-        """
-        data = self._redis.get(key)
-        if data == SENTINEL_NONE:
-            return None
-        elif data is None:
-            try:
-                if fn is not None:
-                    return fn(data)
-                else:
-                    return data
-            except Exception as e:
-                print(f"Error converting data: {e}")
-                return None
-        else:
-            return None
 
     def get(self, key: str,
             fn: Optional[Callable[[bytes], Union[str, bytes, int, float]]] =
