@@ -52,22 +52,22 @@ def replay(fn: Callable):
     and prints them out in a readable format.
     """
     try:
-        r = redis.Redis()
+        redis = redis.Redis()
         
         f_name = fn.__qualname__
         
-        n_calls = r.get(f_name)
-        n_calls = int(n_calls.decode('utf-8')) if n_calls else 0
-        print(f'{f_name} was called {n_calls} times:')
+        num_calls = redis.get(f_name)
+        num_calls = int(num_calls.decode('utf-8')) if num_calls else 0
+        print(f'{f_name} was called {num_calls} times:')
 
-        inputs = r.lrange(f_name + ":inputs", 0, -1)
-        outputs = r.lrange(f_name + ":outputs", 0, -1)
+        inputs = redis.lrange(f_name + ":inputs", 0, -1)
+        outputs = redis.lrange(f_name + ":outputs", 0, -1)
 
-        for i, o in zip(inputs, outputs):
+        for in_key, out_key in zip(inputs, outputs):
 
-            i = i.decode('utf-8')
-            o = o.decode('utf-8')
-            print(f'{f_name}(*{i}) -> {o}')
+            in_key = in_key.decode('utf-8')
+            out_key = out_key.decode('utf-8')
+            print(f'{f_name}(*{in_key}) -> {out_key}')
     except Exception as e:
         print(f'An error occurred while processing {f_name}: {e}')
 
