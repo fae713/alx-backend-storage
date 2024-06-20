@@ -18,7 +18,25 @@ class Cache:
         """constructor method"""
         self._redis = redis.Redis()
         self._redis.flushdb
+        self.count_calls = {}
 
+    def count_calls(method: Callable) -> Callable:
+        """
+        A decorator to count the number of times a method is called.
+        param method: The method to decorate.
+              return
+        """
+        key = method.__qualname__
+        """creates a unique key"""
+
+        @wraps(method)
+        def wrapper(self, *args, **kwargs):
+
+            self._redis.incr(key)
+            return method(self, *args, **kwargs)
+        return wrapper
+
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """
         - This method takes a data argument and returns a string.
