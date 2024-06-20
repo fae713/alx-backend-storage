@@ -10,6 +10,68 @@ import uuid
 from functools import wraps
 
 
+def count_calls(method: Callable) -> Callable:
+    """
+    A decorator to count the number of times a method is called.
+    param method: The method to decorate.
+          return
+    """
+    key = method.__qualname__
+    """creates a unique key"""
+
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+
+        self._redis.incr(key)
+        return method(self, *args, **kwargs)
+    return wrapper
+
+def call_history(method: Callable) -> Callable:
+    """
+    A decorator to store the history of inputs and outputs for a function.
+    """
+    # Construct keys for inputs and outputs based on the method's qualified name
+    input_key = f"{method.__qualname__}:inputs"
+    output_key = f"{method.__qualname__}:outputs"
+
+    @wraps(method)
+    def history_wrapper(self, *args, **kwargs):
+        self._redis.rpush(input_key, str(args))
+
+        result = method(self, *args, **kwargs)
+
+        self._redis.rpush(output_key, str(result))
+
+        return result
+    return history_wrapper
+
+def replay(fn: Callable):
+    """
+    Display the history of calls of a particular function.
+    This function connects to Redis, retrieves the history of inputs and outputs for the given function,
+    and prints them out in a readable format.
+    """
+    try:
+        r = redis.Redis()
+        
+        f_name = fn.__qualname__
+        
+        n_calls = r.get(f_name)
+        n_calls = int(n_calls.decode('utf-8')) if n_calls else 0
+        print(f'{f_name} was called {n_calls} times:')
+
+        inputs = r.lrange(f_name + ":inputs", 0, -1)
+        outputs = r.lrange(f_name + ":outputs", 0, -1)
+
+        for i, o in zip(inputs, outputs):
+
+            i = i.decode('utf-8')
+            o = o.decode('utf-8')
+            print(f'{f_name}(*{i}) -> {o}')
+    except Exception as e:
+        print(f'An error occurred while processing {f_name}: {e}')
+
+
 class Cache:
     """
     This declares the class in redis for caching.
@@ -19,41 +81,6 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb
         self.count_calls = {}
-
-    def count_calls(method: Callable) -> Callable:
-        """
-        A decorator to count the number of times a method is called.
-        param method: The method to decorate.
-              return
-        """
-        key = method.__qualname__
-        """creates a unique key"""
-
-        @wraps(method)
-        def wrapper(self, *args, **kwargs):
-
-            self._redis.incr(key)
-            return method(self, *args, **kwargs)
-        return wrapper
-
-    def call_history(method: Callable) -> Callable:
-        """
-        A decorator to store the history of inputs and outputs for a function.
-        """
-        # Construct keys for inputs and outputs based on the method's qualified name
-        input_key = f"{method.__qualname__}:inputs"
-        output_key = f"{method.__qualname__}:outputs"
-
-        @wraps(method)
-        def history_wrapper(self, *args, **kwargs):
-            self._redis.rpush(input_key, str(args))
-
-            result = method(self, *args, **kwargs)
-
-            self._redis.rpush(output_key, str(result))
-
-            return result
-        return history_wrapper
 
     @call_history
     @count_calls
@@ -105,8 +132,6 @@ class Cache:
             value = 0
         return value
 
-
-# Test block
 if __name__ == "__main__":
     cache = Cache()
 
@@ -124,3 +149,5 @@ if __name__ == "__main__":
     cache.store("foo")
     cache.store("bar")
     cache.store(42)
+
+    replay(cache.store)
