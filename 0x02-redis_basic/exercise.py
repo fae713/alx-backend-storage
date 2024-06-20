@@ -9,7 +9,6 @@ from typing import Union, Callable, Optional
 import uuid
 from functools import wraps
 
-SENTINEL_NONE = "N/A"
 
 class Cache:
     """
@@ -28,8 +27,6 @@ class Cache:
             param: data -> The data to be strored in redis.
                    return -> A string representing the key.
         """
-        if data is None:
-            data = SENTINEL_NONE
         key = str(uuid.uuid4())
         self._redis.set(key, data)
         return key
