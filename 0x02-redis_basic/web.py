@@ -6,7 +6,7 @@ import redis
 import requests
 from typing import Callable
 
-r = redis.Redis()
+redis = redis.Redis()
 
 
 def count_requests(method: Callable) -> Callable:
@@ -17,14 +17,14 @@ def count_requests(method: Callable) -> Callable:
     @wraps(method)
     def count_req_wrapper(url):
         """ Wrapper for decorator functionality """
-        r.incr(f"count:{url}")
-        cached_html = r.get(f"cached:{url}")
-        if cached_html:
-            return cached_html.decode('utf-8')
+        redis.incr(f"count:{url}, 0")
+        cached_result = redis.get(f"cached:{url}")
+        if cached_result:
+            return cached_result.decode('utf-8')
 
-        html = method(url)
-        r.setex(f"cached:{url}", 10, html)
-        return html
+        cached_result = method(url)
+        redis.setex(f"cached_result:{url}", 10, cached_result)
+        return cached_result
 
     return count_req_wrapper
 
@@ -35,5 +35,4 @@ def get_page(url: str) -> str:
     This function uses the requests module to obtain the HTML
     content of a particular URL and returns it.
     """
-    request = requests.get(url)
-    return request.text
+    return requests.get(url).text
